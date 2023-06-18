@@ -1,0 +1,52 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "npm run server",
+    "server": "node ./src/bin/www.js",
+    "watch:dev": "nodemon"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.22.1",
+    "@babel/preset-env": "^7.22.4",
+    "@graphql-tools/graphql-file-loader": "^8.0.0",
+    "@graphql-tools/load": "^8.0.0",
+    "@graphql-tools/schema": "^10.0.0",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "graphql": "^16.6.0",
+    "graphql-geojson": "^1.0.0",
+    "graphql-http": "^1.18.0",
+    "graphql-playground-middleware-express": "^1.7.23",
+    "graphql-subscriptions": "^2.0.0",
+    "graphql-tools": "^9.0.0",
+    "graphql-type-json": "^0.3.2",
+    "lodash": "^4.17.21",
+    "lowdb": "^6.0.1",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.22",
+    "shortid": "^2.2.16"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "nodemonConfig": {
+    "exec": "npm run server",
+    "watch": [
+      "src/*",
+      "public/*"
+    ],
+    "ignore": [
+      "**/__tests__/**",
+      "*.test.js",
+      "*.spec.js"
+    ]
+  }
+}

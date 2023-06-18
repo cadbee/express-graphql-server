@@ -1,0 +1,35 @@
+scalar JSON
+
+type Layer {
+    id: ID!
+    title: String!
+    visible: Boolean!
+    content: JSON!
+}
+
+input LayerInput {
+    title: String!
+    content: JSON!
+}
+
+input UpdateLayerInput {
+    id: ID!
+    title: String!
+    visible: Boolean!
+    content: JSON!
+}
+
+type Query {
+    allLayers: [Layer]
+}
+
+type Mutation {
+    addLayer (input: LayerInput!): Layer!
+    deleteLayer (id: ID!): Layer!
+    updateLayer (input: UpdateLayerInput!): Layer!
+}
+
+type Subscription {
+    layerAdded: Layer!
+    layerDeleted: Layer!
+}
