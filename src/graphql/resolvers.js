@@ -26,7 +26,7 @@ export default {
 
         deleteLayer: (root, {id}, {pubsub, db}) => {
             const layer = db.chain.get('layers').find({id: id}).value();
-            db.chain.get('layers').remove({id: id});
+            db.chain.get('layers').remove({id: id}).value();
             pubsub.publish('LAYER_DELETED', {layerDeleted: layer});
             db.write();
             return layer;
