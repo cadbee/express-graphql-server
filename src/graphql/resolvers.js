@@ -5,7 +5,8 @@ export default {
     JSON: GraphQLJSONObject,
 
     Query: {
-        allLayers: (root, args, {db}) => db.chain.get('layers').value()
+        layers: (root, args, {db}) => db.chain.get('layers').value(),
+        signs: (root, args, {db}) => db.chain.get('signs').value(),
     },
 
     Mutation: {
@@ -14,6 +15,7 @@ export default {
                 id: shortid.generate(),
                 title: input.title,
                 visible: false,
+                current: false,
                 content: input.content
             }
             db.chain.get('layers').value().push(layer);
@@ -37,6 +39,20 @@ export default {
                     visible: input.visible,
                     content: input.content
                 }).value();
+            db.write();
+            return layer;
+        },
+
+        changeCurrentLayer: (root, {id, value}, {db}) => {
+            db.chain.get('layers').value().forEach((layer) => layer.current = false);
+            db.chain.get('layers').find({id: id}).value().current = value;
+            db.write();
+            return db.chain.get('layers').value();
+        },
+
+        changeLayerVisibility: (root, {id}, {db}) => {
+            const layer = db.chain.get('layers').find({id: id}).value();
+            layer.visible = !layer.visible;
             db.write();
             return layer;
         },

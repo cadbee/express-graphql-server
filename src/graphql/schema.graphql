@@ -4,29 +4,40 @@ type Layer {
     id: ID!
     title: String!
     visible: Boolean!
-    content: JSON!
+    current: Boolean!
+    content: String!
+}
+
+type Sign {
+    id: ID!
+    title: String!
+    signs: [Sign]
 }
 
 input LayerInput {
     title: String!
-    content: JSON!
+    content: String!
 }
 
 input UpdateLayerInput {
     id: ID!
     title: String!
     visible: Boolean!
-    content: JSON!
+    content: String!
+    current: Boolean!
 }
 
 type Query {
-    allLayers: [Layer]
+    layers: [Layer],
+    signs: [Sign],
 }
 
 type Mutation {
     addLayer (input: LayerInput!): Layer!
     deleteLayer (id: ID!): Layer!
     updateLayer (input: UpdateLayerInput!): Layer!
+    changeCurrentLayer (id: ID!, value: Boolean!): [Layer]!
+    changeLayerVisibility (id: ID!): Layer
 }
 
 type Subscription {
