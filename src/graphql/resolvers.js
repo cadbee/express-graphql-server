@@ -7,6 +7,7 @@ export default {
     Query: {
         layers: (root, args, {db}) => db.chain.get('layers').value(),
         signs: (root, args, {db}) => db.chain.get('signs').value(),
+        troops: (root, args, {db}) => db.chain.get('troops').value(),
     },
 
     Mutation: {

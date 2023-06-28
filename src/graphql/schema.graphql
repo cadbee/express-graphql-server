@@ -11,7 +11,14 @@ type Layer {
 type Sign {
     id: ID!
     title: String!
+    troop: ID!
     signs: [Sign]
+}
+
+type Troop {
+    id: ID!
+    title: String!
+    troops: [Troop]
 }
 
 input LayerInput {
@@ -30,6 +37,7 @@ input UpdateLayerInput {
 type Query {
     layers: [Layer],
     signs: [Sign],
+    troops: [Troop],
 }
 
 type Mutation {
