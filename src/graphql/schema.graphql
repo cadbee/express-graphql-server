@@ -28,10 +28,7 @@ input LayerInput {
 
 input UpdateLayerInput {
     id: ID!
-    title: String!
-    visible: Boolean!
     content: String!
-    current: Boolean!
 }
 
 type Query {

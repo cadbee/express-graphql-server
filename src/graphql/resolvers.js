@@ -36,8 +36,6 @@ export default {
         updateLayer: (root, {input}, {db}) => {
             const layer = db.chain.get('layers').find({id: input.id}).assign(
                 {
-                    title: input.title,
-                    visible: input.visible,
                     content: input.content
                 }).value();
             db.write();
